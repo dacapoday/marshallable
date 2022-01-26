@@ -1,31 +1,10 @@
-# marshallable
-Make generic data types marshallable!
-
-## Features
-Implement methods:
-* `String() (string)`
-* `MarshalJSON() ([]byte, error)`
-* `UnmarshalJSON([]byte) (error)`
-
-for the following types:
-* `time.Duration`
-* `net.IP`
-* `url.URL`
-* `mail.Address`
-* `regexp.Regexp`
-
-and common data types:
-* TCP/UDP port number
-
-## Usage
-Scenes: for configuration initialization and deserialization
-
-```go
 package main
 
 import (
 	"encoding/json"
 	"fmt"
+	"net/url"
+	"time"
 
 	m "github.com/dacapoday/marshallable"
 )
@@ -42,6 +21,7 @@ type Config struct {
 }
 
 var base Config
+var empty Config
 
 func init() {
 	// initialize Config with constant values
@@ -72,6 +52,27 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("%#v\n", config)
-}
 
-```
+	fmt.Println("marshal empty value:")
+
+	empty_data, err := json.Marshal(empty)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%s\n", empty_data)
+
+	// use underlying type
+	var fqdn *url.URL
+	fqdn = config.ApiServer.URL
+
+	var timeout time.Duration
+	timeout = config.Timeout.Duration
+
+	_ = config.ListenPort.Port
+	_ = config.ListenAddress.IP
+	_ = config.Contact.Address
+	_ = config.SpamRule.Regexp
+
+	_ = fqdn
+	_ = timeout
+}
