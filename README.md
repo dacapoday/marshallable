@@ -17,6 +17,12 @@ for the following types:
 and common data types:
 * TCP/UDP port number
 
+## Install
+
+```
+go get github.com/dacapoday/marshallable
+```
+
 ## Usage
 Scenes: for configuration initialization and deserialization
 
@@ -75,3 +81,7 @@ func main() {
 }
 
 ```
+
+## License
+
+[MIT License](LICENSE)
