@@ -1,4 +1,4 @@
-# marshallable
+# Marshallable [![Go Reference](https://pkg.go.dev/badge/github.com/dacapoday/marshallable.svg)](https://pkg.go.dev/github.com/dacapoday/marshallable)
 Make generic data types marshallable!
 
 ## Features
@@ -7,7 +7,7 @@ Implement methods:
 * `MarshalJSON() ([]byte, error)`
 * `UnmarshalJSON([]byte) (error)`
 
-for the following types:
+for the following standard library types:
 * `time.Duration`
 * `net.IP`
 * `url.URL`
@@ -22,6 +22,10 @@ and common data types:
 ```
 go get github.com/dacapoday/marshallable
 ```
+
+## Documentation
+
+Read [Go Reference](https://pkg.go.dev/github.com/dacapoday/marshallable)
 
 ## Usage
 Scenes: for configuration initialization and deserialization
